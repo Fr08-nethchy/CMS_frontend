@@ -1,0 +1,88 @@
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+      <span>Create Account</span>
+      <span class="spacer"></span>
+      <button class="mat-dialog-close" mat-dialog-close mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<!--  <img class="wave" src="./assets/img/avatar.svg">-->
+  <div class="container">
+    <div class="img">
+      <img src="./assets/img/logo.png">
+    </div>
+    <div class="login-content">
+      <mat-card>
+
+        <form [formGroup]="signupForm">
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="name" required>
+            <mat-error *ngIf="signupForm.controls.name.touched && signupForm.controls.name.invalid">
+              <span *ngIf="signupForm.controls.name.errors.required">You need provide a username</span>
+              <span *ngIf="signupForm.controls.name.errors.pattern">Invalid username</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required >
+            <mat-error *ngIf="signupForm.controls.email.touched && signupForm.controls.email.invalid">
+              <span *ngIf="signupForm.controls.email.errors.required">You need provide an Email</span>
+              <span *ngIf="signupForm.controls.email.errors.pattern">Invalid email</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contact number</mat-label>
+            <input matInput formControlName="contactNumber" >
+            <mat-error *ngIf="signupForm.controls.contactNumber.touched && signupForm.controls.contactNumber.invalid">
+              <span *ngIf="signupForm.controls.contactNumber.errors.required">You need provide an phone number</span>
+              <span *ngIf="signupForm.controls.contactNumber.errors.pattern">Invalid phone number</span>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" required type="password" [type]="password ? 'password' : 'text'">
+            <button color="primary" mat-icon-button type="button" matSuffix (click)="password = !password" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="'show password'" >
+              <mat-icon >{{password ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">
+              <span *ngIf="signupForm.controls.password.errors.required">You need provide a password</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" required type="password" [type]="confirmPassword ? 'password' : 'text'">
+            <button color="primary" mat-icon-button type="button" matSuffix (click)="confirmPassword = !confirmPassword" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="'show password'" >
+              <mat-icon >{{password ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.invalid">
+              <span *ngIf="signupForm.controls.confirmPassword.errors.required">You need provide a password</span>
+            </mat-error>
+            <mat-hint *ngIf="valideSubmit() && !(signupForm.controls.confirmPassword.invalid)">
+              New password & confirm Password do not match.
+            </mat-hint>
+          </mat-form-field>
+
+         <mat-dialog-actions>
+           <button (click)="handleSubmit()" [disabled]="valideSubmit() || !(signupForm.valid && signupForm.dirty)" mat-raised-button color="primary" type="submit">  <mat-icon>save</mat-icon> Create Account</button>
+           <button  mat-raised-button color="warn" mat-dialog-close ><mat-icon>close</mat-icon>cancel</button>
+         </mat-dialog-actions>
+        </form>
+        <br>
+        <div style="display:flex;justify-content: space-evenly;align-items: center">
+          <a href="#">Forgot Password?</a>  <a href="#">Do you have an account ? Login</a>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+

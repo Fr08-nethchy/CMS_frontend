@@ -1,0 +1,14 @@
+
+<mat-dialog-content class="mat-typography">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+      <span class="title-center">Confirmation</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <br>
+  <h5 style="font-size: 19px; text-align: center">Are you sure you want to {{details.message}}</h5>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" (click)="handleChangeAction()">Yes</button>
+  <button mat-raised-button mat-dialog-close>No</button>
+</mat-dialog-actions>
